@@ -4,7 +4,10 @@ const connectDB = require('./config/connectDB')
 
 require('dotenv').config()
 
+const routes = require('./routes/index.js');
+
 const app = express()
+app.use(express.json());
 
 app.use(cors({
     origin : process.env.FRONTEND_URL,
@@ -19,6 +22,9 @@ app.get('/', (req,res) => {
         message : `Server is running on PORT no. ${PORT}`
     })
 })
+
+// add api endpoints
+app.use('/api',routes);
 
 connectDB().then(() => {
     app.listen(PORT, () => {
