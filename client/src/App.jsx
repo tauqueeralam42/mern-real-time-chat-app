@@ -1,4 +1,5 @@
-import { Outlet } from "react-router-dom"
+import { Outlet } from "react-router-dom";
+import toast,{Toaster} from "react-hot-toast";
 
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
 
   return (
     <>
+      <Toaster/>
       <Outlet/>
     </>
   )
