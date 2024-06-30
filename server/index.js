@@ -1,36 +1,32 @@
 const express = require('express')
 const cors = require('cors')
-const connectDB = require('./config/connectDB')
-const cookiesParser = require('cookie-parser');
-
 require('dotenv').config()
+const connectDB = require('./config/connectDB')
+const router = require('./routes/index')
+const cookiesParser = require('cookie-parser')
+const { app, server } = require('./socket/index')
 
-const routes = require('./routes/index.js');
-
-const app = express()
-app.use(express.json());
-app.use(cookiesParser());
-
+// const app = express()
 app.use(cors({
     origin : process.env.FRONTEND_URL,
     credentials : true
 }))
-
+app.use(express.json())
+app.use(cookiesParser())
 
 const PORT = process.env.PORT || 8080
 
-app.get('/', (req,res) => {
-    res.json({
-        message : `Server is running on PORT no. ${PORT}`
+app.get('/',(request,response)=>{
+    response.json({
+        message : "Server running at " + PORT
     })
 })
 
-// add api endpoints
-app.use('/api',routes);
+//api endpoints
+app.use('/api',router)
 
-connectDB().then(() => {
-    app.listen(PORT, () => {
-        console.log(`Server is running on PORT no. ${PORT}`);
+connectDB().then(()=>{
+    server.listen(PORT,()=>{
+        console.log("server running at " + PORT)
     })
 })
-

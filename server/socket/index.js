@@ -3,8 +3,7 @@ const { Server } = require('socket.io')
 const http  = require('http')
 const getUserDetailsFromToken = require('../helpers/getUserDetailsFromToken')
 const UserModel = require('../models/UserModel')
-const  ConversationModel = require('../models/ConvetsationModel')
-const MessageModel = require('../models/MessageModel')
+const { ConversationModel,MessageModel } = require('../models/ConversationModel')
 const getConversation = require('../helpers/getConversation')
 
 const app = express()
@@ -34,8 +33,15 @@ io.on('connection',async(socket)=>{
     const user = await getUserDetailsFromToken(token)
 
     //create a room
-    socket.join(user?._id.toString())
-    onlineUser.add(user?._id?.toString())
+    if (user && user._id) {
+        socket.join(user._id.toString());
+        onlineUser.add(user._id.toString())
+    } else {
+        console.error('User or user ID is undefined');
+    }
+    
+    // socket.join(user?._id.toString())
+    // onlineUser.add(user?._id?.toString())
 
     io.emit('onlineUser',Array.from(onlineUser))
 
