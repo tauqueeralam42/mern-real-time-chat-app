@@ -13,7 +13,7 @@ const SearchUser = ({onClose}) => {
 
 
     const handleSearchUser = async()=>{
-        const URL = `${process.env.REACT_APP_BACKEND_URL}/api/search-user`
+        const URL = `${import.meta.env.VITE_BACKEND_URL}/api/search-user`
         try {
             setLoading(true)
             const response = await axios.post(URL,{
@@ -51,7 +51,7 @@ const SearchUser = ({onClose}) => {
             </div>
 
             {/**display search user */}
-            <div className='bg-white mt-2 w-full p-4 rounded h-full max-h-[70vh] overflow-scroll'>
+            <div className='bg-white mt-2 w-full p-4 rounded h-full max-h-[70vh] overflow-auto'>
                 {/**no user found */}
                 {
                     searchUser.length === 0 && !loading && (
