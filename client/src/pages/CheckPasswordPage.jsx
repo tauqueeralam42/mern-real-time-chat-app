@@ -58,7 +58,7 @@ const CheckPasswordPage = () => {
             setData({
               password : "",
             })
-            navigate('/')
+            navigate('/message')
         }
     } catch (error) {
         toast.error(error?.response?.data?.message)
@@ -105,7 +105,7 @@ const CheckPasswordPage = () => {
 
           </form>
 
-          <p className='my-3 text-center'><Link to={"/forgot-password"} className='hover:text-primary font-semibold'>Forgot password ?</Link></p>
+          <p className='my-3 text-center hover:text-primary font-semibold'>Forgot password ?</p>
         </div>
     </div>
   )

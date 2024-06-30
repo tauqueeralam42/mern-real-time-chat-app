@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     element : <App/>,
     children : [
         {
-            path : "register",
+            path : "/",
             element : <AuthLayouts><RegisterPage/></AuthLayouts>
         },
         {
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
             element : <AuthLayouts><Forgotpassword/></AuthLayouts>
         },
         {
-            path : "",
+            path : "message",
             element : <Home/>,
             children : [
                 {
