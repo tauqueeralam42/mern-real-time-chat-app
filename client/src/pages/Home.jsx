@@ -59,9 +59,9 @@ const Home = () => {
   },[])
 
 
-  const basePath = location.pathname === '/'
+  const basePath = location.pathname === '/message'
   return (
-    <div className='grid lg:grid-cols-[300px,1fr] h-screen max-h-screen'>
+    <div className='grid sm:grid-cols-[300px,1fr] h-screen max-h-screen'>
         <section className={`bg-white ${!basePath && "hidden"} lg:block`}>
            <Sidebar/>
         </section>
@@ -72,7 +72,7 @@ const Home = () => {
         </section>
 
 
-        <div className={`justify-center items-center flex-col gap-2 hidden ${!basePath ? "hidden" : "lg:flex" }`}>
+        <div className={`justify-center items-center flex-col gap-2  ${!basePath ? "hidden" : "flex" }`}>
             <div>
               <img
                 src={logo}
