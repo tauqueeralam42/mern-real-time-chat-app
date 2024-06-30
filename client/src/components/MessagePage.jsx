@@ -155,8 +155,8 @@ const MessagePage = () => {
                   </Link>
                   <div>
                       <Avatar
-                        width={50}
-                        height={50}
+                        width={40}
+                        height={40}
                         imageUrl={dataUser?.profile_pic}
                         name={dataUser?.name}
                         userId={dataUser?._id}
