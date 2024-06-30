@@ -8,11 +8,12 @@ async function checkPassword(request,response){
 
         const user = await UserModel.findById(userId)
 
-        const verifyPassword = await bcryptjs.compare(password,user.password)
+        const verifyPassword = password === user.password
+        // await bcryptjs.compare(password,user.password)
 
         if(!verifyPassword){
             return response.status(400).json({
-                message : "Please check password",
+                message : "Please Check Password",
                 error : true
             })
         }
@@ -30,7 +31,7 @@ async function checkPassword(request,response){
         }
 
         return response.cookie('token',token,cookieOptions).status(200).json({
-            message : "Login successfully",
+            message : "Login Successfully",
             token : token,
             success :true
         })

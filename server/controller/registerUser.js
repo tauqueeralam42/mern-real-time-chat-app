@@ -22,7 +22,7 @@ async function registerUser(request,response){
             name,
             email,
             profile_pic,
-            password : hashpassword
+            password 
         }
 
         const user = new UserModel(payload)
